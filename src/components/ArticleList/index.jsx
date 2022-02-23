@@ -3,9 +3,10 @@ import './index.css'
 import { getArticles } from '../../fake-api';
 import ArticleItem from '../ArticleItem';
 import PubSub from 'pubsub-js';
+import { withRouter } from 'react-router-dom';
 
 
-export default class ArticleList extends Component {
+class ArticleList extends Component {
     state = {
         articles: [],
         offset: 0,
@@ -141,11 +142,12 @@ export default class ArticleList extends Component {
 
     clickArticle = (e) => {
         var cur = e.target
-        while (cur.nodeName != 'LI') {
+        while (cur.nodeName !== 'LI') {
             cur = cur.parentNode
         }
         console.log(cur.id)
-        
+        this.props.history.push("/article");
+        console.log(this.props.history)
     }
 
     render() {
@@ -172,3 +174,5 @@ export default class ArticleList extends Component {
         )
     }
 }
+
+export default withRouter(ArticleList);
