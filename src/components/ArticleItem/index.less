@@ -1,0 +1,48 @@
+.article{
+    border-bottom: 0.1rem solid rgb(235, 235, 235);
+    .article-header{
+        height: 1rem;
+        margin: 1rem 0;
+        .item{
+            display: inline-block;
+            font-size: 0.6rem;
+            margin: 0.2rem 0.5rem;
+            margin-right: 0;
+            color: gray;
+            padding-right: 0.5rem;
+            border-right: 0.1rem solid rgb(235, 235, 235);
+        }
+        .item:first-of-type{
+            margin-left: 0;
+        }
+        .item:last-of-type{
+            border-right:0;
+        }
+    }
+
+    .title{
+        font-weight: 700;
+        margin: 1rem 0;
+    }
+
+    .content{
+        color: gray;
+        font-size: small;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap
+    }
+
+    .article-footer{
+        margin: 1rem 0;
+        .item{
+            display: inline-block;
+            font-size: 0.8rem;
+            margin: 0.2rem 0.5rem;
+            color: gray;
+        }
+        .item:first-of-type{
+            margin-left: 0;
+        }
+    }
+}

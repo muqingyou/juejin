@@ -1,0 +1,12 @@
+.articlebar1 {
+  height: 2rem;
+  background-color: white;
+}
+.articlebar1 .item {
+  display: inline-block;
+  margin: 0 1rem;
+  color: gray;
+}
+.articlebar1 .active {
+  color: #4a9eff;
+}

@@ -1,0 +1,19 @@
+.homebar {
+  height: 5%;
+  border-bottom: 0.1rem solid #ebebeb;
+}
+.homebar .item {
+  display: inline-block;
+  font-size: 0.9rem;
+  margin: 0.4rem 1rem;
+  margin-right: 0;
+  color: gray;
+  padding-right: 1rem;
+  border-right: 0.1rem solid #ebebeb;
+}
+.homebar .active {
+  color: #3fabff;
+}
+.homebar .item:last-of-type {
+  border-right: 0;
+}

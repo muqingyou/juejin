@@ -1,0 +1,15 @@
+.articlelist {
+  height: 92%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0 1rem;
+}
+.articlelist ul {
+  padding-inline-start: 0;
+}
+.articlelist ul li {
+  list-style: none;
+}
+.articlelist::-webkit-scrollbar {
+  display: none;
+}
