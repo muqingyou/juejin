@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css'
-import { getArticles } from '../../fake-api';
+import { getArticles, getArticleById } from '../../fake-api';
 import ArticleItem from '../ArticleItem';
 import PubSub from 'pubsub-js';
 import { withRouter } from 'react-router-dom';
@@ -79,20 +79,43 @@ class ArticleList extends Component {
                 hometab: data
             })
             dom.scrollTop = 0
-            //发送article请求
-            var category = this.state.tab1;
-            if (this.state.tab2 != 0) {
-                category = this.state.tab2
-            }
-            getArticles(category, data).then(
-                response => {
-                    console.log('articles-----', response);
-                    this.setState(response.data)
-                },
-                error => {
-                    console.log(error)
+            if (data === 'history') {
+                var storage = window.localStorage
+                var articleHistory = storage.articleHistory;
+                var idArray = articleHistory.split(",")
+                var articleArray = []
+                idArray.forEach(element => {
+                    getArticleById(element).then(
+                        response => {
+                            console.log(response.data.article)
+                            articleArray.push(response.data.article)
+                        },
+                        error => { }
+                    )
+                })
+                //异步等待forEach完成
+                Promise.all(articleArray).then(() => {
+                    console.log(articleArray)
+                    this.setState({
+                        articles: articleArray
+                    })
+                })
+            } else {
+                //发送article请求
+                var category = this.state.tab1;
+                if (this.state.tab2 != 0) {
+                    category = this.state.tab2
                 }
-            )
+                getArticles(category, data).then(
+                    response => {
+                        console.log('articles-----', response);
+                        this.setState(response.data)
+                    },
+                    error => {
+                        console.log(error)
+                    }
+                )
+            }
         })
     }
 
@@ -135,7 +158,7 @@ class ArticleList extends Component {
         const scrollHeight = dom.scrollHeight; //滚动条内容的总高度
         console.log('dom---------', dom.scrollTop, dom.clientHeight,
             dom.scrollHeight)
-        if (contentScrollTop + clientHeight >= scrollHeight - 1) {
+        if ((contentScrollTop + clientHeight >= scrollHeight - 1) && this.state.hometab !== 'history') {
             this.getLogPages();    // 获取数据的方法
         }
     }
@@ -146,8 +169,31 @@ class ArticleList extends Component {
             cur = cur.parentNode
         }
         console.log(cur.id)
-        this.props.history.push("/article");
-        console.log(this.props.history)
+        var storage = window.localStorage;
+        // 写入缓存
+        var articleHistory = storage.articleHistory
+        var idArray = []
+        if(articleHistory===undefined){
+            idArray.push(cur.id)
+        }else{
+            //去重加入
+            idArray = articleHistory.split(",")
+            var flag = true
+            var round = 0
+            idArray.forEach(element => {
+                if(element===cur.id){
+                    flag = false
+                }
+                round++
+            })
+            while(round<idArray.length){}
+            if(flag){
+                idArray.push(cur.id)
+            }
+        }
+        storage['articleHistory'] = idArray;
+        console.log(window.localStorage)
+        this.props.history.push(`/article?id=${cur.id}`);
     }
 
     render() {

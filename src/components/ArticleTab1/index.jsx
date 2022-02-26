@@ -19,10 +19,21 @@ export default class ArticleTab1 extends Component {
       })
     })
 
+    //订阅hometab点击分类id
+    this.hometoken = PubSub.subscribe('HomeTab click', (_, data) => {
+      console.log('Tab1订阅到HomeTab click-------', data)
+      if(data==='history'){
+        this.setState({
+          activeNum:0,
+          tab2: 0
+        })
+      }
+    })
   }
 
   componentWillUnmount() {
     PubSub.unsubscribe(this.tab2token)
+    PubSub.unsubscribe(this.hometoken)
   }
 
   handleClick = (e) => {

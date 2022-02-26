@@ -20,7 +20,7 @@ export default class ArticleItem extends Component {
         <div className="title">{this.props.article_info.title}</div>
         <div className="content">{this.props.article_info.brief_content}</div>
         <div className='article-footer'>
-          <div className='item'><EyeOutlined /> {this.props.article_info.hot_index}</div>
+          <div className='item'><EyeOutlined /> {this.props.article_info.view_count}</div>
           <div className='item'><LikeOutlined /> {this.props.article_info.digg_count}</div>
           <div className='item'><MessageOutlined /> {this.props.article_info.comment_count}</div>
         </div>

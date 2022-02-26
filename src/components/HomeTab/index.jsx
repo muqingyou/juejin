@@ -7,6 +7,29 @@ export default class HomeTab extends Component {
     active: 'hot',
   }
 
+  componentDidMount(){
+    //订阅tab1点击
+    this.tab1token = PubSub.subscribe('ArticleTab1 click', (_, data) => {
+      console.log('hometab订阅到ArticleTab1 click', data)
+      if(this.state.active==='history'){
+        this.setState({active:'hot'})
+      }
+    })
+
+    //订阅tab2点击
+    this.tab2token = PubSub.subscribe('ArticleTab2 click', (_, data) => {
+      console.log('hometab订阅到ArticleTab2 click', data)
+      if(this.state.active==='history'){
+        this.setState({active:'hot'})
+      }
+    })
+  }
+
+  componentWillUnmount(){
+    PubSub.unsubscribe(this.tab1token)
+    PubSub.unsubscribe(this.tab2token)
+  }
+
   handleClick = (e) =>{
     this.setState({active:e.target.id})
     PubSub.publish('HomeTab click',e.target.id);

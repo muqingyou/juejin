@@ -1,0 +1,34 @@
+.article-page {
+  padding: 1rem;
+}
+.article-page .article .author-bar {
+  display: flex;
+}
+.article-page .article .author-bar .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-right: 1rem;
+}
+.article-page .article .author-bar .info {
+  color: grey;
+  display: flex;
+}
+.article-page .article .author-bar .info .time {
+  margin-right: 1rem;
+}
+.article-page .commentlist {
+  height: 92%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0 1rem;
+}
+.article-page .commentlist ul {
+  padding-inline-start: 0;
+}
+.article-page .commentlist ul li {
+  list-style: none;
+}
+.article-page .commentlist::-webkit-scrollbar {
+  display: none;
+}

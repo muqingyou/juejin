@@ -1,0 +1,56 @@
+.comment-item {
+  margin-top: 1rem;
+  display: flex;
+}
+.comment-item .comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-right: 1rem;
+}
+.comment-item .comment-right {
+  flex-grow: 2;
+}
+.comment-item .comment-right .comment-header {
+  height: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.comment-item .comment-right .comment-header .user-title {
+  margin-left: 1rem;
+  font-size: small;
+  color: grey;
+  width: 10rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.comment-item .comment-right .comment-header .time {
+  margin-left: auto;
+  color: grey;
+  font-size: small;
+}
+.comment-item .content {
+  color: gray;
+  font-size: small;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.comment-item .comment-footer {
+  margin: 1rem 0;
+}
+.comment-item .comment-footer .item {
+  display: inline-block;
+  font-size: 0.8rem;
+  margin: 0.2rem 0.5rem;
+  color: gray;
+}
+.comment-item .comment-footer .item:first-of-type {
+  margin-left: 0;
+}
+.comment-item .second-comment {
+  background-color: #f9fafb;
+}

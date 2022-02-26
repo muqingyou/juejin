@@ -1,0 +1,59 @@
+.comment-item{
+    margin-top: 1rem;
+    display: flex;
+    .comment-avatar{
+        width: 40px;
+        height: 40px;
+        border-radius:20px;
+        margin-right: 1rem;
+    }
+    .comment-right{
+        flex-grow: 2;
+        .comment-header{
+            height: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            .user-title{
+                margin-left: 1rem;
+                font-size: small;
+                color: grey;
+                width: 10rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .time{
+                margin-left: auto;//靠右
+                color: grey;
+                font-size: small;
+            }
+        }
+    }
+
+    .content{
+        color: gray;
+        font-size: small;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap
+    }
+
+    .comment-footer{
+        margin: 1rem 0;
+        .item{
+            display: inline-block;
+            font-size: 0.8rem;
+            margin: 0.2rem 0.5rem;
+            color: gray;
+        }
+        .item:first-of-type{
+            margin-left: 0;
+        }
+    }
+
+    .second-comment{
+        background-color: #f9fafb;
+    }
+}
