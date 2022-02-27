@@ -82,24 +82,31 @@ class ArticleList extends Component {
             if (data === 'history') {
                 var storage = window.localStorage
                 var articleHistory = storage.articleHistory;
-                var idArray = articleHistory.split(",")
-                var articleArray = []
-                idArray.forEach(element => {
-                    getArticleById(element).then(
-                        response => {
-                            console.log(response.data.article)
-                            articleArray.push(response.data.article)
-                        },
-                        error => { }
-                    )
-                })
-                //异步等待forEach完成
-                Promise.all(articleArray).then(() => {
-                    console.log(articleArray)
+                if(articleHistory===undefined){
                     this.setState({
-                        articles: articleArray
+                        articles: []
                     })
-                })
+                }
+                else{
+                    var idArray = articleHistory.split(",")
+                    var articleArray = []
+                    idArray.forEach(element => {
+                        getArticleById(element).then(
+                            response => {
+                                console.log(response.data.article)
+                                articleArray.push(response.data.article)
+                            },
+                            error => { }
+                        )
+                    })
+                    //异步等待forEach完成
+                    Promise.all(articleArray).then(() => {
+                        console.log(articleArray)
+                        this.setState({
+                            articles: articleArray
+                        })
+                    })
+                }
             } else {
                 //发送article请求
                 var category = this.state.tab1;
